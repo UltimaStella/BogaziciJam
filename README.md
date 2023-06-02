@@ -1,1 +1,1 @@
-# BogaziciJam
+BoğazIciGameJam
