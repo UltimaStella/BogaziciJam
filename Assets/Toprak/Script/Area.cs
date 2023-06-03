@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Tolga.Scripts;
 using UnityEngine;
 using static Tolga.Scripts.Managers.DisplayMusicInGame;
 
@@ -33,13 +31,11 @@ public class Area : MonoBehaviour
     public void MakeVisible()
     {
         gameObject.SetActive(true);
-
-        PlayFinishedRoomSound();
     }
 
     public void ActivateArea()
     {
-        AreaTimerCoroutine = StartCoroutine(CountDown());
+        if (AreaTimerCoroutine == null) AreaTimerCoroutine = StartCoroutine(CountDown());
     }
 
     public void DeactivateArea()
@@ -59,6 +55,18 @@ public class Area : MonoBehaviour
         MakeFallOnThemeSound("themeMusic");
         
         Player.Instance.Retry(PlayerSpawnLocation.transform.position);
+        ResetArea();
         ActivateArea();
+    }
+
+    public void ResetArea()
+    {
+        Transform Enemies = transform.Find("Enemies");
+        if (Enemies != null)
+        {
+            for (int i = 0; i < Enemies.childCount; i++)
+                Enemies.GetChild(i).GetComponent<Enemy>().ResetEnemy();
+            KilledEnemyCount = 0;
+        }
     }
 }
