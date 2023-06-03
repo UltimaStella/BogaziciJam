@@ -84,7 +84,8 @@ public class PlayerController : Controller
 
         if (q && canDash) { StartCoroutine(Glide()); }
 
-        if (e) { Jump(); }
+        if (escape) {  }
+
 
 
         if (space && canDash) { StartCoroutine(Dash()); }
