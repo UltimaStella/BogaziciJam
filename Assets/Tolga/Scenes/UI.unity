@@ -1459,7 +1459,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f70b432c9984bb8a436416171bf0da9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onDebugMode: 1
+  onDebugMode: 0
+  onSceneDebugMode: 1
   themeAudioSource: {fileID: 894662739}
   inGameAudioSource: {fileID: 556705388}
   inGameClipManagers:

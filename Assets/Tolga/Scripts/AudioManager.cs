@@ -3,6 +3,7 @@ using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 namespace Tolga.Scripts
@@ -14,6 +15,7 @@ namespace Tolga.Scripts
         
         [Header("To see Audio Debug")]
         public bool onDebugMode = false;
+        public bool onSceneDebugMode = false;
         
         [Header("Theme Game Music")] public AudioSource themeAudioSource;
         
@@ -38,8 +40,12 @@ namespace Tolga.Scripts
             if(themeAudioSource == null) Debug.Log("Theme Audio Source is Null!");
             if(inGameAudioSource == null) Debug.Log("Game Audio Source is Null!");
             else if(inGameClipManagers.Length == 0) Debug.Log("Empty AudioClip");
+
+            if (onSceneDebugMode)
+            {
+                PlayThemeSound(SceneManager.GetActiveScene().buildIndex == 1 ? "themeMusic" : "UI");
+            }
             
-            PlayThemeSound("UI");
         }
 
         private void Awake()
@@ -120,6 +126,7 @@ namespace Tolga.Scripts
             if (onDebugMode)
                 UnityEngine.Debug.Log(@string);
         }
+        
         
     }
     
