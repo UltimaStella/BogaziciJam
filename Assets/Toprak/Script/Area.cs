@@ -8,8 +8,9 @@ public class Area : MonoBehaviour
 {
     public int ID;
     [SerializeField] GameObject PlayerSpawnLocation;
-    [SerializeField] int AreaTime;
-    int RemainTime;
+    public int AreaTime;
+    public int RemainTime { get; private set; }
+    public int KilledEnemyCount = 0;
 
     Coroutine AreaTimerCoroutine;
 
@@ -54,11 +55,10 @@ public class Area : MonoBehaviour
 
     public void PlayerFailed()
     {
-        Debug.Log(PlayerSpawnLocation.transform.position);
-
         PlayPunishmentSound();
         MakeFallOnThemeSound("themeMusic");
         
         Player.Instance.Retry(PlayerSpawnLocation.transform.position);
+        ActivateArea();
     }
 }

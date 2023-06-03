@@ -30,6 +30,5 @@ public class Player : MonoBehaviour
         float zMove = Input.GetAxisRaw("Vertical");
 
         transform.position += new Vector3(xMove, 0, zMove) * speed * Time.deltaTime;
-        
     }
 }
