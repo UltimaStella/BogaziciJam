@@ -28,8 +28,9 @@ namespace Assets.Scripts.UI.Manager
         //}
         public  void LoadScene(string sceneName)
         {
-            SceneManager.LoadScene(sceneName);
+            SceneManager.LoadSceneAsync(sceneName); // Wait until the asynchronous scene fully loads (it is for music)
         }
+        
         public void ClickExit()
         {
             Application.Quit();

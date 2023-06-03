@@ -1,13 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using static Tolga.Scripts.Managers.DisplayMusicInGame;
 
 public class Area : MonoBehaviour
 {
     public int ID;
     [SerializeField] GameObject PlayerSpawnLocation;
-    [SerializeField] int AreaTime;
-    int RemainTime;
+    public int AreaTime;
+    public int RemainTime { get; private set; }
+    public int KilledEnemyCount = 0;
 
     Coroutine AreaTimerCoroutine;
 
@@ -34,7 +35,7 @@ public class Area : MonoBehaviour
 
     public void ActivateArea()
     {
-        AreaTimerCoroutine = StartCoroutine(CountDown());
+        if (AreaTimerCoroutine == null) AreaTimerCoroutine = StartCoroutine(CountDown());
     }
 
     public void DeactivateArea()
@@ -48,11 +49,24 @@ public class Area : MonoBehaviour
         Destroy(gameObject);
     }
 
-    
-
     public void PlayerFailed()
     {
-        Debug.Log(PlayerSpawnLocation.transform.position);
+        PlayPunishmentSound();
+        MakeFallOnThemeSound("themeMusic");
+        
         Player.Instance.Retry(PlayerSpawnLocation.transform.position);
+        ResetArea();
+        ActivateArea();
+    }
+
+    public void ResetArea()
+    {
+        Transform Enemies = transform.Find("Enemies");
+        if (Enemies != null)
+        {
+            for (int i = 0; i < Enemies.childCount; i++)
+                Enemies.GetChild(i).GetComponent<Enemy>().ResetEnemy();
+            KilledEnemyCount = 0;
+        }
     }
 }

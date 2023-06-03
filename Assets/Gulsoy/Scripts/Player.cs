@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -21,6 +19,7 @@ public class Player : MonoBehaviour
     public void Retry(Vector3 SpawnLoc)
     {
         transform.SetPositionAndRotation(SpawnLoc, Quaternion.identity);
+        AreaManager.Instance.CurrentArea.ResetArea();
     }
 
     // kapilari denemek icin hareket lazimdir abe
@@ -29,7 +28,6 @@ public class Player : MonoBehaviour
         float xMove = Input.GetAxisRaw("Horizontal");
         float zMove = Input.GetAxisRaw("Vertical");
 
-        transform.position += new Vector3(xMove, 0, zMove) * speed * Time.deltaTime;
-        
+        transform.position += speed * Time.deltaTime * new Vector3(xMove, 0, zMove);
     }
 }
