@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -60,6 +58,7 @@ public class Player : MonoBehaviour
     public void Retry(Vector3 SpawnLoc)
     {
         transform.SetPositionAndRotation(SpawnLoc, Quaternion.identity);
+        AreaManager.Instance.CurrentArea.ResetArea();
     }
     private void FixedUpdate()
     {
@@ -76,6 +75,7 @@ public class Player : MonoBehaviour
         int tempScore = comboScore;
         comboScore = 0;
         return tempScore;
+
     }
 
     private void Move()

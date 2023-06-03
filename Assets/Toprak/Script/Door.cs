@@ -1,5 +1,5 @@
-using Tolga.Scripts;
 using UnityEngine;
+using static Tolga.Scripts.Managers.DisplayMusicInGame;
 
 public class Door : MonoBehaviour
 {
@@ -9,6 +9,7 @@ public class Door : MonoBehaviour
         {
             AreaManager.Instance.GoToNextArea();
 
+            PlayFinishedRoomSound();
         }
     }
 
