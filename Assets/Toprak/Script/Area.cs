@@ -5,18 +5,19 @@ using UnityEngine;
 public class Area : MonoBehaviour
 {
     public int ID;
-    [SerializeField] GameObject PlayerStartLocation;
-    [SerializeField] float AreaTime;
-    float RemainTime;
+    [SerializeField] GameObject PlayerSpawnLocation;
+    [SerializeField] int AreaTime;
+    int RemainTime;
 
     Coroutine AreaTimerCoroutine;
 
     IEnumerator CountDown()
     {
+        RemainTime = AreaTime;
         while (RemainTime > 0)
         {
-            RemainTime = AreaTime;
             yield return new WaitForSeconds(1);
+            --RemainTime;
         }
         PlayerFailed();
     }
@@ -33,17 +34,25 @@ public class Area : MonoBehaviour
 
     public void ActivateArea()
     {
-        AreaTimerCoroutine = StartCoroutine("CountDown");
+        AreaTimerCoroutine = StartCoroutine(CountDown());
     }
 
-    public void DeactivateArea() 
-    { 
-        Destroy(gameObject);
-        StopCoroutine(AreaTimerCoroutine);
+    public void DeactivateArea()
+    {
+        if (AreaTimerCoroutine != null) StopCoroutine(AreaTimerCoroutine);
     }
+
+    public void DeleteArea()
+    {
+        DeactivateArea();
+        Destroy(gameObject);
+    }
+
+    
 
     public void PlayerFailed()
     {
-
+        Debug.Log(PlayerSpawnLocation.transform.position);
+        Player.Instance.Retry(PlayerSpawnLocation.transform.position);
     }
 }
