@@ -15,7 +15,7 @@ namespace Tolga.Scripts
     public class AudioManager : MonoBehaviour
     {
         public static AudioManager Instance;
-        
+
         [Header("To see Audio Debug")]
         public bool onDebugMode = false;
         public bool onSceneDebugMode = false;
