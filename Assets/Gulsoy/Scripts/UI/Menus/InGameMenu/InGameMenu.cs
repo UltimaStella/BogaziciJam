@@ -28,9 +28,6 @@ namespace Assets.Scripts.UI.InGameMenu
         // Update is called once per frame
         public void Update()
         {
-
-
-
         }
 
         public void PointerDown(int index)
