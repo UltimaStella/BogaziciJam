@@ -56,7 +56,6 @@ namespace Tolga.Scripts
             if (Instance == null)
             {
                 Instance = this;
-                DontDestroyOnLoad(gameObject);
             }
         }
         public void PlayThemeSound(string sound)
