@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+
     public void Retry(Vector3 SpawnLoc)
     {
         transform.SetPositionAndRotation(SpawnLoc, Quaternion.identity);
