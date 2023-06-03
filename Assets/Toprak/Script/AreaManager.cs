@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Tolga.Scripts;
 using UnityEngine;
+using static Tolga.Scripts.Managers.DisplayMusicInGame;
 
 public class AreaManager : MonoBehaviour
 {
@@ -45,8 +46,8 @@ public class AreaManager : MonoBehaviour
 
     public void GoToNextArea()
     {
-        AudioManager.Instance.AddThemePitchSound("themeMusic");
-        AudioManager.Instance.PlayFinishedRoomSound();
+        AddThemePitchSound("themeMusic");
+        PlayFinishedRoomSound();
         
         if (CurrentArea.ID == AllAreas.Length - 1) return;
 

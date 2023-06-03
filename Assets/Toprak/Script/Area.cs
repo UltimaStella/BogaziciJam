@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Tolga.Scripts;
 using UnityEngine;
+using static Tolga.Scripts.Managers.DisplayMusicInGame;
 
 public class Area : MonoBehaviour
 {
@@ -31,7 +32,8 @@ public class Area : MonoBehaviour
     public void MakeVisible()
     {
         gameObject.SetActive(true);
-        AudioManager.Instance.PlayFinishedRoomSound();
+
+        PlayFinishedRoomSound();
     }
 
     public void ActivateArea()
@@ -54,8 +56,8 @@ public class Area : MonoBehaviour
     {
         Debug.Log(PlayerSpawnLocation.transform.position);
 
-        AudioManager.Instance.PlayPunishmentSound();
-        AudioManager.Instance.MakeFallOnThemeSound("themeMusic");
+        PlayPunishmentSound();
+        MakeFallOnThemeSound("themeMusic");
         
         Player.Instance.Retry(PlayerSpawnLocation.transform.position);
     }

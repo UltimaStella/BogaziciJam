@@ -1,6 +1,8 @@
 using System;
 using System.Linq;
 using JetBrains.Annotations;
+using Tolga.Scripts;
+using Tolga.Scripts.Managers;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
@@ -8,6 +10,7 @@ using UnityEngine.Serialization;
 
 namespace Tolga.Scripts
 {
+    using static DisplayMusicInGame;
     [System.Serializable]
     public class AudioManager : MonoBehaviour
     {
@@ -69,7 +72,7 @@ namespace Tolga.Scripts
 
         }
 
-        private void PlayInGameSound(string sound)
+        public void PlayInGameSound(string sound)
         {
             foreach (var manager in inGameClipManagers)
             {
@@ -88,39 +91,6 @@ namespace Tolga.Scripts
             inGameAudioSource.PlayOneShot(buttonClip,1f);
         }
         
-        public void AddThemePitchSound(string sound)
-        {
-            themeAudioSource.pitch += pitchValue;
-            OnDebug("Pitch Added");
-
-        }
-
-        public void MakeFallOnThemeSound(string sound)
-        {
-            OnDebug("Fallen the sound");
-            themeAudioSource.pitch = 1;
-        }
-
-        public void PlayPunishmentSound()
-        {
-            OnDebug("Played Punishment Sound");
-            PlayInGameSound("Failed");
-
-        }
-        
-        public void PlayFinishedRoomSound()
-        {
-            OnDebug("Played Finished Room Sound");
-            PlayInGameSound("FinishedRoom");
-        }
-
-        public void PlayFinishedPartMusic()
-        {
-            OnDebug("Played Finished Part Sound");
-            PlayInGameSound("PartFinished");
-            
-        }
-
         public void OnDebug(in string @string)
         {
             if (onDebugMode)
@@ -138,34 +108,3 @@ public class ClipManager
     [SerializeField] public AudioClip clip;
     
 }
-
-/*
-namespace ANAN
-{
-    using static AudioManager;
-    public class DisplayMusicInGame
-    {
-        public void PlayPunishmentSound()
-        {
-            Instance.OnDebug("Played Punishment Sound");
-            Instance.PlaySound("Failed");
-
-        }
-            
-        public void PlayFinishedRoomSound()
-        {
-            Instance.OnDebug("Played Finished Room Sound");
-            Instance.PlaySound("FinishedRoom");
-        }
-
-        public void PlayFinishedPartMusic()
-        {
-            Instance.OnDebug("Played Finished Part Sound");
-            Instance.PlaySound("PartFinished");
-                
-        }
-
-        
-    }    
-}
-*/
