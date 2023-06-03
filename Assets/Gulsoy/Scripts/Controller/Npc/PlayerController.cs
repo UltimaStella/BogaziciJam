@@ -45,6 +45,7 @@ public class PlayerController : Controller
     void Start()
     {
         audioSpeed = 1;
+        speedScale = 1;
         rotationAngle = 0;
         rb = GetComponent<Rigidbody>();
     }
