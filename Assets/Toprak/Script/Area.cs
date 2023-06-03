@@ -20,6 +20,7 @@ public class Area : MonoBehaviour
             yield return new WaitForSeconds(1);
             --RemainTime;
         }
+        Debug.Log("Area");
         PlayerFailed();
     }
 
