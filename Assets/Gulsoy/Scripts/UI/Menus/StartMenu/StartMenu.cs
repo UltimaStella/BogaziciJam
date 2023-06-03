@@ -20,7 +20,7 @@ namespace Assets.Scripts.UI.StartMenu
         }
         public void ClickCredits()
         {
-
+            
         }
         
     }
