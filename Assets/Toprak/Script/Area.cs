@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Tolga.Scripts;
 using UnityEngine;
 
 public class Area : MonoBehaviour
@@ -49,10 +50,12 @@ public class Area : MonoBehaviour
     }
 
     
-
     public void PlayerFailed()
     {
         Debug.Log(PlayerSpawnLocation.transform.position);
+        
+        AudioManager.Instance.FallSound("themeMusic");
+        
         Player.Instance.Retry(PlayerSpawnLocation.transform.position);
     }
 }

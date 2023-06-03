@@ -1,3 +1,4 @@
+using Tolga.Scripts;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -7,6 +8,7 @@ public class Door : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             AreaManager.Instance.GoToNextArea();
+            AudioManager.Instance.AddPitchSound("themeMusic");
         }
     }
 
