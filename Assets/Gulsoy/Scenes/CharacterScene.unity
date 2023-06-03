@@ -183,6 +183,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9100000, guid: 1613a108b4b18d445bdb4eb3774d34bc, type: 2}
     - target: {fileID: 5866666021909216657, guid: b0756969c3a69f640ab2e76a0e6ed816, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
+        'mixamorig:LeftHandThumb2'\n\tTransform 'mixamorig:LeftHandIndex1'\n\tTransform
+        'mixamorig:LeftHandPinky2'\n\tTransform 'mixamorig:RightHandRing2'\n\tTransform
+        'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform 'mixamorig:LeftHandThumb3'\n\tTransform
+        'mixamorig:RightArm'\n\tand more ...\n\tFrom animation clip 'mixamo.com'"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: b0756969c3a69f640ab2e76a0e6ed816, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
@@ -311,13 +321,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 795604008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5958fcff3b9f78242890e93816cfe4a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f876124ed48b024d8483d0978faca17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 1807021617}
-  topSpeed: 6
-  bottomSpeed: 2
-  glideLimit: 100
+  tr: {fileID: 0}
+  topSpeed: 20
+  bottomSpeed: 3
+  glideLimit: 0
+  jumpPower: 0
+  nerfTime: 20
+  dashPower: 24
+  gladingPower: 24
 --- !u!54 &795604010
 Rigidbody:
   m_ObjectHideFlags: 0

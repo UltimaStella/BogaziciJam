@@ -40,7 +40,11 @@ public class Area : MonoBehaviour
 
     public void DeactivateArea()
     {
-        if (AreaTimerCoroutine != null) StopCoroutine(AreaTimerCoroutine);
+        if (AreaTimerCoroutine != null) 
+        { 
+            StopCoroutine(AreaTimerCoroutine); 
+            AreaTimerCoroutine = null;
+        }
     }
 
     public void DeleteArea()
@@ -56,6 +60,7 @@ public class Area : MonoBehaviour
         
         Player.Instance.Retry(PlayerSpawnLocation.transform.position);
         ResetArea();
+        DeactivateArea();
         ActivateArea();
     }
 
