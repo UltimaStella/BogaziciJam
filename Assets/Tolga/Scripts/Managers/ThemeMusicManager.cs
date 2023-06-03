@@ -8,9 +8,8 @@ namespace Tolga.Scripts.Managers
         {
             Instance.themeAudioSource.pitch += Instance.pitchValue;
             Instance.OnDebug("Pitch Added");
-
         }
-
+        
         public static void MakeFallOnThemeSound(string sound)
         {
             Instance.OnDebug("Fallen the sound");

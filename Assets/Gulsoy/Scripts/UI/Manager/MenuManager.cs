@@ -13,7 +13,7 @@ namespace Assets.Scripts.UI.Manager
             panel.SetActive(true);
         }
 
-        public static void ClosePanel(GameObject panel)
+        public void ClosePanel(GameObject panel)
         {
             panel.SetActive(false);
         }

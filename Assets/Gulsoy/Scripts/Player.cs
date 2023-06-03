@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        
     }
 
     // kapilari denemek icin hareket lazimdir abe
