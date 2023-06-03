@@ -15,30 +15,31 @@ namespace Tolga.Scripts
         [Header("To see Audio Debug")]
         public bool onDebugMode = false;
         
-        [Header("Theme Game Music")]
-        public AudioSource themeAudioSource;
+        [Header("Theme Game Music")] public AudioSource themeAudioSource;
         
         [Header("General Junk Game Music")]
         public  AudioSource inGameAudioSource;
         public ClipManager[] inGameClipManagers;
-
-        [Header("Used Sound Name In Game")]
-        public readonly string[] SoundNamesInCode =new []{"themeMusic","FinishedRoom","PartFinished","Failed"};
+        public ClipManager[] themeClipManagers;
         
-        [Header("To Make It Faster")]
+        [Header("Theme Game Music")] 
+        public AudioClip buttonClip;
+      
+        [Header("To Make Theme Music Faster")]
         [Range(-3,3)]
         public float pitchValue;
         
-        
+//        [Header("Used Sound Name In Game")] // unused
+//        public readonly string[] SoundNamesInGameClip =new []{"FinishedRoom","PartFinished","Failed"};
+//        public readonly string[] SoundNamesInThemeClip =new []{"themeMusic","UI"};
+
         private void Start()
         {
-            themeAudioSource = GetComponent<AudioSource>();
             if(themeAudioSource == null) Debug.Log("Theme Audio Source is Null!");
             if(inGameAudioSource == null) Debug.Log("Game Audio Source is Null!");
             else if(inGameClipManagers.Length == 0) Debug.Log("Empty AudioClip");
             
-            
-            PlaySound("themeMusic");
+            PlayThemeSound("UI");
         }
 
         private void Awake()
@@ -49,26 +50,38 @@ namespace Tolga.Scripts
                 DontDestroyOnLoad(gameObject);
             }
         }
+        public void PlayThemeSound(string sound)
+        {
+            foreach (var manager in themeClipManagers)
+            {
+                
+                if (sound != manager.name) continue;
+                OnDebug("found!");
+                themeAudioSource.clip = manager.clip;
+                themeAudioSource.Play();
+            }
 
-        private void PlaySound(string sound)
+        }
+
+        private void PlayInGameSound(string sound)
         {
             foreach (var manager in inGameClipManagers)
             {
+                
                 if (sound != manager.name) continue;
 
-                if (sound == "themeMusic")
-                {
-                    themeAudioSource.clip = manager.clip;
-                    themeAudioSource.Play();
-                    continue;
-                }
-                
                 inGameAudioSource.clip = manager.clip;
                 inGameAudioSource.Play();
+                
             }
             
-        }
+        }        
 
+        public void DisplayButtonSound()
+        {
+            inGameAudioSource.PlayOneShot(buttonClip,1f);
+        }
+        
         public void AddThemePitchSound(string sound)
         {
             themeAudioSource.pitch += pitchValue;
@@ -85,20 +98,20 @@ namespace Tolga.Scripts
         public void PlayPunishmentSound()
         {
             OnDebug("Played Punishment Sound");
-            PlaySound("Failed");
+            PlayInGameSound("Failed");
 
         }
         
         public void PlayFinishedRoomSound()
         {
             OnDebug("Played Finished Room Sound");
-            PlaySound("FinishedRoom");
+            PlayInGameSound("FinishedRoom");
         }
 
         public void PlayFinishedPartMusic()
         {
             OnDebug("Played Finished Part Sound");
-            PlaySound("PartFinished");
+            PlayInGameSound("PartFinished");
             
         }
 
@@ -117,6 +130,35 @@ public class ClipManager
     [SerializeField] public string name;
     [SerializeField] public AudioClip clip;
     
-     
 }
- 
+
+/*
+namespace ANAN
+{
+    using static AudioManager;
+    public class DisplayMusicInGame
+    {
+        public void PlayPunishmentSound()
+        {
+            Instance.OnDebug("Played Punishment Sound");
+            Instance.PlaySound("Failed");
+
+        }
+            
+        public void PlayFinishedRoomSound()
+        {
+            Instance.OnDebug("Played Finished Room Sound");
+            Instance.PlaySound("FinishedRoom");
+        }
+
+        public void PlayFinishedPartMusic()
+        {
+            Instance.OnDebug("Played Finished Part Sound");
+            Instance.PlaySound("PartFinished");
+                
+        }
+
+        
+    }    
+}
+*/

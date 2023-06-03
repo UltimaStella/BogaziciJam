@@ -45,7 +45,7 @@ public class AreaManager : MonoBehaviour
 
     public void GoToNextArea()
     {
-         AudioManager.Instance.AddThemePitchSound("themeMusic");
+        AudioManager.Instance.AddThemePitchSound("themeMusic");
         AudioManager.Instance.PlayFinishedRoomSound();
         
         if (CurrentArea.ID == AllAreas.Length - 1) return;
