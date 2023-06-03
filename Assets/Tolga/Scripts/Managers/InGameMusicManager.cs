@@ -19,9 +19,6 @@ namespace Tolga.Scripts.Managers
         {
             Instance.OnDebug("Played Finished Part Sound");
             Instance.PlayInGameSound("PartFinished");
-                
         }
-
-        
     }    
 }
