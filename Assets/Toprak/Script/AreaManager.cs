@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Tolga.Scripts.Managers.DisplayMusicInGame;
@@ -40,7 +39,7 @@ public class AreaManager : MonoBehaviour
 
     [SerializeField] Area[] AllAreas;
     readonly Queue<Area> VisibleAreas = new Queue<Area>(); // prev 0, current 1, next 2
-    Area CurrentArea;
+    public Area CurrentArea { get; private set; }
 
     List<Score> ScoreList = new List<Score>();
 
@@ -91,7 +90,6 @@ public class AreaManager : MonoBehaviour
             );
         ScoreList.Add(newScore);
 
-        Debug.Log("Enemy Count: " + CurrentArea.KilledEnemyCount + "\nComplete Time: " + (CurrentArea.AreaTime - CurrentArea.RemainTime));
         // change the area
         if (CurrentArea.ID == AllAreas.Length - 1) return;
 
