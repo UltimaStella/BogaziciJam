@@ -124,7 +124,7 @@ public class PlayerController : Controller
         e = Input.GetKeyDown(KeyCode.E);
         q = Input.GetKeyDown(KeyCode.Q);
         space = Input.GetKeyDown(KeyCode.Space);
-
+        escape = Input.GetKeyDown(KeyCode.Escape);
     }
 
 

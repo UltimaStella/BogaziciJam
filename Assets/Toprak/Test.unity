@@ -1005,14 +1005,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 808746725}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f876124ed48b024d8483d0978faca17, type: 3}
+  m_Script: {fileID: 11500000, guid: 3c0825cff37165c42971dccaa6913a44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Acc: 20
-  Dec: 50
-  JumpPower: 20
+  Acc: 10
+  Dec: 20
+  JumpPower: 100
   RotationSpeed: 3
-  MaxSpeed: 300
+  MaxSpeed: 200
 --- !u!54 &808746731
 Rigidbody:
   m_ObjectHideFlags: 0
