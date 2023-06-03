@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Tolga.Scripts;
 using UnityEngine;
+using static Tolga.Scripts.Managers.DisplayMusicInGame;
 
 public class AreaManager : MonoBehaviour
 {
@@ -44,6 +46,11 @@ public class AreaManager : MonoBehaviour
 
     public void GoToNextArea()
     {
+        
+        AddThemePitchSound("themeMusic");
+        PlayFinishedRoomSound();
+        
+        
         if (CurrentArea.ID == AllAreas.Length - 1) return;
 
         int NewAreaID = CurrentArea.ID + 2;
