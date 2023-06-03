@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.UI.InGameMenu;
 using UnityEngine;
 
+[Serializable]
 public class PlayerController : Controller
 {
 
@@ -15,6 +18,7 @@ public class PlayerController : Controller
     [HideInInspector] private float speed;
     [HideInInspector] private float speedScale;
     [HideInInspector] private float audioSpeed;
+    public InGameMenu gameMenu;
 
     private float rotationAngle;
 
@@ -85,6 +89,7 @@ public class PlayerController : Controller
         if (q && canDash) { StartCoroutine(Glide()); }
 
         if (e) { Jump(); }
+        if (escape) { gameMenu.PauseGame(); }
 
 
         if (space && canDash) { StartCoroutine(Dash()); }
@@ -124,6 +129,7 @@ public class PlayerController : Controller
         e = Input.GetKeyDown(KeyCode.E);
         q = Input.GetKeyDown(KeyCode.Q);
         space = Input.GetKeyDown(KeyCode.Space);
+        escape = Input.GetKeyDown(KeyCode.Escape);
 
     }
 

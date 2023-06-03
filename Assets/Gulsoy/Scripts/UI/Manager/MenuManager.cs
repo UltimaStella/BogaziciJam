@@ -36,11 +36,13 @@ namespace Assets.Scripts.UI.Manager
         //}
         public void LoadScene(string sceneName)
         {
+            Time.timeScale = 1f;
             SceneManager.LoadSceneAsync(sceneName); // Wait until the asynchronous scene fully loads (it is for music)
         }
 
         public void ClickExit()
         {
+            Time.timeScale = 1f;
             Application.Quit();
         }
     }
