@@ -38,13 +38,14 @@ public class PlayerController : Controller
     bool canJump;
     Vector3 movement;
     private int comboScore = 0;
-    private bool q, w, e, a, s, d, shift, space;
+    private bool q, w, e, a, s, d, shift, space, escape;
 
 
     // Start is called before the first frame update
     void Start()
     {
         audioSpeed = 1;
+        speedScale = 1;
         rotationAngle = 0;
         rb = GetComponent<Rigidbody>();
     }

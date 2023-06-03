@@ -1,5 +1,4 @@
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,7 +9,6 @@ public class Enemy : MonoBehaviour
     Vector3 initPos;
     Quaternion initQuartenion;
     
-
     Area area;
 
     void Start()

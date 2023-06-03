@@ -15,7 +15,7 @@ namespace Tolga.Scripts
     public class AudioManager : MonoBehaviour
     {
         public static AudioManager Instance;
-        
+
         [Header("To see Audio Debug")]
         public bool onDebugMode = false;
         public bool onSceneDebugMode = false;
@@ -44,10 +44,7 @@ namespace Tolga.Scripts
             if(inGameAudioSource == null) Debug.Log("Game Audio Source is Null!");
             else if(inGameClipManagers.Length == 0) Debug.Log("Empty AudioClip");
 
-            if (onSceneDebugMode)
-            {
-                PlayThemeSound(SceneManager.GetActiveScene().buildIndex == 1 ? "themeMusic" : "UI");
-            }
+            PlayThemeSound(SceneManager.GetActiveScene().buildIndex == 1 ? "themeMusic" : "NULL");
             
         }
 
