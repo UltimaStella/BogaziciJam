@@ -31,6 +31,7 @@ public class Area : MonoBehaviour
     public void MakeVisible()
     {
         gameObject.SetActive(true);
+        AudioManager.Instance.PlayFinishedRoomSound();
     }
 
     public void ActivateArea()
@@ -49,12 +50,12 @@ public class Area : MonoBehaviour
         Destroy(gameObject);
     }
 
-    
     public void PlayerFailed()
     {
         Debug.Log(PlayerSpawnLocation.transform.position);
-        
-        AudioManager.Instance.FallSound("themeMusic");
+
+        AudioManager.Instance.PlayPunishmentSound();
+        AudioManager.Instance.MakeFallOnThemeSound("themeMusic");
         
         Player.Instance.Retry(PlayerSpawnLocation.transform.position);
     }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Tolga.Scripts;
 using UnityEngine;
 
 public class AreaManager : MonoBehaviour
@@ -44,6 +45,9 @@ public class AreaManager : MonoBehaviour
 
     public void GoToNextArea()
     {
+         AudioManager.Instance.AddThemePitchSound("themeMusic");
+        AudioManager.Instance.PlayFinishedRoomSound();
+        
         if (CurrentArea.ID == AllAreas.Length - 1) return;
 
         int NewAreaID = CurrentArea.ID + 2;

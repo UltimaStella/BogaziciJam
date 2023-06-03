@@ -1,17 +1,27 @@
 using System;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Serialization;
 
 namespace Tolga.Scripts
 {
+    [System.Serializable]
     public class AudioManager : MonoBehaviour
     {
         public static AudioManager Instance;
+        public bool onDebugMode = false;
+        
+        [Header("Theme Game Music")]
+        public AudioSource themeAudioSource;
+        
+        [Header("General Junk Game Music")]
+        public  AudioSource inGameAudioSource;
+        public ClipManager[] inGameClipManagers;
 
-        private AudioSource _audioSource;
-        public ClipManager[] clipManagers;
+        [Header("Used Sound Name In Game")]
+        public readonly string[] SoundNamesInCode =new []{"themeMusic","FinishedRoom","PartFinished","Failed"};
         
         [Header("To Make It Faster")]
         [Range(-3,3)]
@@ -20,10 +30,12 @@ namespace Tolga.Scripts
         
         private void Start()
         {
-            _audioSource = GetComponent<AudioSource>();
-            if(_audioSource == null) Debug.Log("Audio Source is Null!");
-            else if(clipManagers.Length == 0) Debug.Log("Empty AudioClip");
-
+            themeAudioSource = GetComponent<AudioSource>();
+            if(themeAudioSource == null) Debug.Log("Theme Audio Source is Null!");
+            if(inGameAudioSource == null) Debug.Log("Game Audio Source is Null!");
+            else if(inGameClipManagers.Length == 0) Debug.Log("Empty AudioClip");
+            
+            
             PlaySound("themeMusic");
         }
 
@@ -38,51 +50,61 @@ namespace Tolga.Scripts
 
         private void PlaySound(string sound)
         {
-            foreach (var manager in clipManagers)
+            foreach (var manager in inGameClipManagers)
             {
                 if (sound != manager.name) continue;
+
+                if (sound == "themeMusic")
+                {
+                    themeAudioSource.clip = manager.clip;
+                    themeAudioSource.Play();
+                    continue;
+                }
                 
-                _audioSource.clip = manager.clip;
-                _audioSource.Play();
+                inGameAudioSource.clip = manager.clip;
+                inGameAudioSource.Play();
             }
             
         }
 
-        public void AddPitchSound(string sound)
+        public void AddThemePitchSound(string sound)
         {
-            _audioSource.pitch += pitchValue;
-            Debug.Log("Pitch Added");
+            themeAudioSource.pitch += pitchValue;
+            OnDebug("Pitch Added");
+
         }
 
-        public void FallSound(string sound)
+        public void MakeFallOnThemeSound(string sound)
         {
-            Debug.Log("Fallen the sound");
-            _audioSource.pitch = 1;
+            OnDebug("Fallen the sound");
+            themeAudioSource.pitch = 1;
         }
 
         public void PlayPunishmentSound()
         {
-            Debug.Log("Played Punishment Sound");
+            OnDebug("Played Punishment Sound");
+            PlaySound("Failed");
 
         }
+        
         public void PlayFinishedRoomSound()
         {
-            Debug.Log("Played Finished Room Sound");
+            OnDebug("Played Finished Room Sound");
+            PlaySound("FinishedRoom");
         }
 
         public void PlayFinishedPartMusic()
         {
-            Debug.Log("Played Finished Part Sound");
-
-        }
-
-        public void PlayDieMusic()
-        {
-            Debug.Log("Played Die Sound");
+            OnDebug("Played Finished Part Sound");
+            PlaySound("PartFinished");
             
-
         }
-        
+
+        public void OnDebug(in string @string)
+        {
+            if (onDebugMode)
+                UnityEngine.Debug.Log(@string);
+        }
         
     }
     
@@ -95,3 +117,4 @@ public class ClipManager
     
      
 }
+ 
