@@ -76,4 +76,8 @@ public class Area : MonoBehaviour
             ComboCount = 0;
         }
     }
+
+    public int GetAreaTime() => AreaTime;
+    public int GetRemainTime() => RemainTime;
+
 }
