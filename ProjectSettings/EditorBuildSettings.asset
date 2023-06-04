@@ -4,11 +4,5 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Tolga/Scenes/UI1.unity
-    guid: d1abb8dc80c2e7c0eb172ec59ec3ddb2
-  - enabled: 1
-    path: Assets/Tolga/Scenes/Toprak-Test.unity
-    guid: 74c4c58fdd5e5ae899a1155870f7f9fa
+  m_Scenes: []
   m_configObjects: {}
