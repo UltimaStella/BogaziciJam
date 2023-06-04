@@ -1,12 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
 public class CameraMovement : MonoBehaviour
 {
-    public Vector3 initialOffset;
+    public Vector3 Offset;
 
     private void Start()
     {
@@ -15,13 +12,11 @@ public class CameraMovement : MonoBehaviour
 
     void LateUpdate()
     {
-        float PlayerX = Player.Instance.transform.position.x;
-        Vector3 TargetPos = Player.Instance.transform.position + initialOffset;
-        transform.position = TargetPos;
+        transform.position = Player.Instance.transform.position + Offset;
     }
 
     public void UpdateOffset()
     {
-        initialOffset = transform.position - Player.Instance.transform.position;
+        Offset = transform.position - Player.Instance.transform.position;
     }
 }

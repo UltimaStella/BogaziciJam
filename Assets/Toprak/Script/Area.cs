@@ -9,6 +9,7 @@ public class Area : MonoBehaviour
     public int AreaTime;
     public int RemainTime { get; private set; }
     public int KilledEnemyCount = 0;
+    public int ComboCount = 0;
 
     Coroutine AreaTimerCoroutine;
 
@@ -72,6 +73,7 @@ public class Area : MonoBehaviour
             for (int i = 0; i < Enemies.childCount; i++)
                 Enemies.GetChild(i).GetComponent<Enemy>().ResetEnemy();
             KilledEnemyCount = 0;
+            ComboCount = 0;
         }
     }
 }

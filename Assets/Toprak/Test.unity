@@ -172,6 +172,7 @@ MonoBehaviour:
   PlayerSpawnLocation: {fileID: 382867149}
   AreaTime: 5
   KilledEnemyCount: 0
+  ComboCount: 0
 --- !u!1 &133376756
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,6 +519,7 @@ MonoBehaviour:
   PlayerSpawnLocation: {fileID: 220117693}
   AreaTime: 1000
   KilledEnemyCount: 0
+  ComboCount: 0
 --- !u!1 &363502248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,9 +1046,15 @@ MonoBehaviour:
   Dec: 50
   JumpForce: 400
   RotationSpeed: 3
-  MaxMovementSpeed: 300
+  MaxWalkSpeed: 200
+  MaxRunSpeed: 300
   FallMultiplier: 50
-
+  DashSpeed: 30
+  DashTime: 0.15
+  DashCooldown: 1
+  MovementSpeedPenaltyAmount: 40
+  MovementSpeedPenaltyTime: 5
+  inDash: 0
 --- !u!54 &808746731
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1239,6 +1247,7 @@ MonoBehaviour:
   PlayerSpawnLocation: {fileID: 1367367385}
   AreaTime: 5
   KilledEnemyCount: 0
+  ComboCount: 0
 --- !u!1 &1189964133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1945,6 +1954,7 @@ MonoBehaviour:
   PlayerSpawnLocation: {fileID: 136212102}
   AreaTime: 100
   KilledEnemyCount: 0
+  ComboCount: 0
 --- !u!1 &1661496583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1993,8 +2003,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 2
   PlayerSpawnLocation: {fileID: 1343000310}
-  AreaTime: 100
+  AreaTime: 10
   KilledEnemyCount: 0
+  ComboCount: 0
 --- !u!1 &1707321055
 GameObject:
   m_ObjectHideFlags: 0
@@ -2201,7 +2212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 562ad7b58ee28b949b1522920b09f240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialOffset: {x: 0, y: 0, z: 0}
+  Offset: {x: 0, y: 0, z: 0}
 --- !u!4 &1756335793
 Transform:
   m_ObjectHideFlags: 0

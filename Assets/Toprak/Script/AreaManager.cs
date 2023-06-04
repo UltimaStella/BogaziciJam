@@ -86,7 +86,7 @@ public class AreaManager : MonoBehaviour
                 CurrentArea.ID,
                 CurrentArea.KilledEnemyCount,
                 CurrentArea.AreaTime - CurrentArea.RemainTime,
-                0 // Player.Instance.GetComboScore()
+                CurrentArea.ComboCount
             );
         ScoreList.Add(newScore);
 
