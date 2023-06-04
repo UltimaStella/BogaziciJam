@@ -21,9 +21,8 @@ namespace Tolga.Scripts
         public bool onSceneDebugMode = false;
         
         [Header("Theme Game Music")] public AudioSource themeAudioSource;
+        [Header("General Junk Game Music")] public  AudioSource inGameAudioSource;
         
-        [Header("General Junk Game Music")]
-        public  AudioSource inGameAudioSource;
         public ClipManager[] inGameClipManagers;
         public ClipManager[] themeClipManagers;
         

@@ -18,10 +18,13 @@ namespace Assets.Scripts.UI.StartMenu
             
             //MenuManager.OpenPanel(gameObject.transform.parent.)
         }
+        
         public void ClickCredits()
         {
             
         }
+        
+        
         
     }
 

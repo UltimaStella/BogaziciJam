@@ -1,20 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.UI.InGameMenu;
 using UnityEngine;
 
+[Serializable]
 public class PlayerController : Controller
 {
-
+    public static PlayerController Instance { get; private set; }
     [SerializeField] private Camera mainCamera;
     [SerializeField] private TrailRenderer tr;
-    [SerializeField] private float topSpeed;
-    [SerializeField] private float bottomSpeed;
-    [SerializeField] private float glideLimit;
-    [SerializeField] private float jumpPower;
+    [SerializeField] private float topSpeed = 6;
+    [SerializeField] private float bottomSpeed = 2;
+    [SerializeField] private float glideLimit = 10;
+    [SerializeField] private float jumpPower  = 300;
     [SerializeField] private float nerfTime = 20;
     [HideInInspector] private float speed;
     [HideInInspector] private float speedScale;
     [HideInInspector] private float audioSpeed;
+    public InGameMenu gameMenu;
 
     private float rotationAngle;
 
@@ -84,8 +88,11 @@ public class PlayerController : Controller
 
         if (q && canDash) { StartCoroutine(Glide()); }
 
-        if (escape) {  }
+        if (e) { Jump(); }
+        if (escape) { gameMenu.PauseGame(); }
 
+        
+        
 
 
         if (space && canDash) { StartCoroutine(Dash()); }
@@ -125,9 +132,8 @@ public class PlayerController : Controller
         e = Input.GetKeyDown(KeyCode.E);
         q = Input.GetKeyDown(KeyCode.Q);
         space = Input.GetKeyDown(KeyCode.Space);
-        escape = Input.GetKeyDown(KeyCode.Escape);
+        escape = Input.GetKeyDown(KeyCode.Escape); 
     }
-
 
     private IEnumerator Glide()
     {
@@ -162,6 +168,7 @@ public class PlayerController : Controller
 
     void Jump()
     {
+        Debug.Log(canJump);
         if (canJump)
             GetComponent<Rigidbody>().AddForce(Vector3.up * jumpPower);
         canJump = false;
