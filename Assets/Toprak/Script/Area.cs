@@ -32,7 +32,7 @@ public class Area : MonoBehaviour
     {
         gameObject.SetActive(true);
     }
-
+        
     public void ActivateArea()
     {
         if (AreaTimerCoroutine == null) AreaTimerCoroutine = StartCoroutine(CountDown());
