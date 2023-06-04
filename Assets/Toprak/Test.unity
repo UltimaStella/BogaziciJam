@@ -1046,6 +1046,7 @@ MonoBehaviour:
   RotationSpeed: 3
   MaxMovementSpeed: 300
   FallMultiplier: 50
+
 --- !u!54 &808746731
 Rigidbody:
   m_ObjectHideFlags: 0

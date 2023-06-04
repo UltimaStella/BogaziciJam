@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1802917, g: 0.22572428, b: 0.30693048, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -171,6 +171,7 @@ MonoBehaviour:
   ID: 4
   PlayerSpawnLocation: {fileID: 382867149}
   AreaTime: 5
+  KilledEnemyCount: 0
 --- !u!1 &4340982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1155,6 +1156,7 @@ MonoBehaviour:
   ID: 0
   PlayerSpawnLocation: {fileID: 220117693}
   AreaTime: 5
+  KilledEnemyCount: 0
 --- !u!1 &290903429
 GameObject:
   m_ObjectHideFlags: 0
@@ -3139,10 +3141,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 808746725}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f876124ed48b024d8483d0978faca17, type: 3}
+  m_Script: {fileID: 11500000, guid: 3c0825cff37165c42971dccaa6913a44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  Acc: 10
+  Dec: 20
+  JumpPower: 100
+  RotationSpeed: 3
+  MaxSpeed: 100
 --- !u!54 &808746731
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3653,6 +3659,7 @@ MonoBehaviour:
   ID: 3
   PlayerSpawnLocation: {fileID: 1367367385}
   AreaTime: 5
+  KilledEnemyCount: 0
 --- !u!1 &1052247723
 GameObject:
   m_ObjectHideFlags: 0
@@ -5310,6 +5317,7 @@ MonoBehaviour:
   ID: 1
   PlayerSpawnLocation: {fileID: 136212102}
   AreaTime: 5
+  KilledEnemyCount: 0
 --- !u!1 &1661496583
 GameObject:
   m_ObjectHideFlags: 0
@@ -5358,6 +5366,7 @@ MonoBehaviour:
   ID: 2
   PlayerSpawnLocation: {fileID: 1343000310}
   AreaTime: 5
+  KilledEnemyCount: 0
 --- !u!1 &1688969266
 GameObject:
   m_ObjectHideFlags: 0
@@ -5825,6 +5834,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0018c17cf80a1834db338a066b9f5301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PerEnemyKillScore: 5
+  PerCompleteTimeScore: 1
+  PerComboCountScore: 10
   AllAreas:
   - {fileID: 290256762}
   - {fileID: 1595655596}
