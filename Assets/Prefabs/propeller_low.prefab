@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5240365661814009481}
   - component: {fileID: 2926854795749312826}
   - component: {fileID: 6001075376337996296}
+  - component: {fileID: 9010157196606681755}
   m_Layer: 0
   m_Name: propeller_low
   m_TagString: Untagged
@@ -107,3 +108,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84bd21672454e94419c496da94c79365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!64 &9010157196606681755
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6032985934138150748}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4507910434963414308, guid: 0a2915758fc27d84babab512b1f916c2, type: 3}
