@@ -1045,7 +1045,7 @@ MonoBehaviour:
   Acc: 40
   Dec: 50
   JumpForce: 400
-  RotationSpeed: 3
+  RotationSpeed: 10
   MaxWalkSpeed: 200
   MaxRunSpeed: 300
   FallMultiplier: 50
@@ -2220,14 +2220,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1756335791}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14, y: 8, z: -9}
+  m_LocalRotation: {x: -0.017693205, y: -0, z: -0, w: 0.9998435}
+  m_LocalPosition: {x: -14, y: 4.63, z: -12.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 133376759}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -2.028, y: 0, z: 0}
 --- !u!1 &1765039680
 GameObject:
   m_ObjectHideFlags: 0
@@ -2353,6 +2353,7 @@ MonoBehaviour:
   CameraHolder: {fileID: 1756335793}
   startPoint: {fileID: 1503081752}
   endPoint: {fileID: 544571194}
+  newOffset: {x: -10, y: 4, z: -15}
   isPlayerInArea: 0
 --- !u!1 &1817658000
 GameObject:
