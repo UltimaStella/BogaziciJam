@@ -82,12 +82,15 @@ public class Area : MonoBehaviour
         Player.Instance.GetComponent<Player>().enabled = false;
         while (Vector3.Distance(Player.Instance.transform.position, PlayerSpawnLocation.position) > 1f)
         {
+            Player.Instance.GetComponent<Collider>().isTrigger = true;
             Player.Instance.transform.position = Vector3.Lerp(Player.Instance.transform.position, PlayerSpawnLocation.position, Time.deltaTime);
             Player.Instance.transform.LookAt(new Vector3(PlayerSpawnLocation.position.x, Player.Instance.transform.position.y, PlayerSpawnLocation.position.z));
             Player.Instance.animator.SetBool("Walking", true);
             Player.Instance.animator.SetBool("Running", true);
             yield return null;
         }
+
+        Player.Instance.GetComponent<Collider>().isTrigger = false;
         Player.Instance.GetComponent<Player>().enabled = true;
         ResetArea();
         DeactivateArea();
