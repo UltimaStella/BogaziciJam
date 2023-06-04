@@ -29,11 +29,6 @@ namespace Assets.Scripts.UI.Manager
 
             OpenPanel(selectedPanel);
         }
-
-        //public static void LoadScene(string sceneName)
-        //{
-        //    SceneManager.LoadScene(sceneName);
-        //}
         public void LoadScene(string sceneName)
         {
             Time.timeScale = 1f;
