@@ -48,11 +48,6 @@ public class Player : MonoBehaviour
         RB = GetComponent<Rigidbody>();
     }
 
-    public void Retry(Vector3 SpawnLoc)
-    {
-        transform.SetPositionAndRotation(SpawnLoc, Quaternion.identity);
-    }
-
     private void FixedUpdate()
     {
         if (inDash)
