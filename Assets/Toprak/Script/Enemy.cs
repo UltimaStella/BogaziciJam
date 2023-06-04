@@ -23,8 +23,9 @@ public class Enemy : MonoBehaviour
         if (AreaManager.Instance.CurrentArea == area && Vector3.Distance(transform.position, Player.Instance.transform.position) > StopDistance)
         {
             float step = Speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, Player.Instance.transform.position, step);
-            Vector3 _direction = (Player.Instance.transform.position - transform.position).normalized;
+            Vector3 playerPos = Player.Instance.transform.position; playerPos.y = initPos.y;
+            transform.position = Vector3.MoveTowards(transform.position, playerPos, step);
+            Vector3 _direction = (playerPos - transform.position).normalized;
             Quaternion _lookRotation = Quaternion.LookRotation(_direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * RotationSpeed);
         }
@@ -35,6 +36,8 @@ public class Enemy : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             area.KilledEnemyCount++;
+            if (Player.Instance.inDash) area.ComboCount++;
+            else Player.Instance.MovementPenalty();
             gameObject.SetActive(false);
         }
     }
