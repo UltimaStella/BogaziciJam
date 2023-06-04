@@ -73,10 +73,10 @@ public class Area : MonoBehaviour
             ComboCount = 0;
         }
     }
-
+    
     public int GetAreaTime() => AreaTime;
     public int GetRemainTime() => RemainTime;
-
+ 
     IEnumerator MovePlayerToSpawnPoint()
     {
         Player.Instance.GetComponent<Player>().enabled = false;
@@ -92,5 +92,5 @@ public class Area : MonoBehaviour
         ResetArea();
         DeactivateArea();
         ActivateArea();
-    }
+    } 
 }
