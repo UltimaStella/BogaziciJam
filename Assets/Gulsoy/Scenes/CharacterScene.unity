@@ -288,8 +288,6 @@ GameObject:
   - component: {fileID: 795604010}
   - component: {fileID: 795604009}
   - component: {fileID: 795604015}
-  - component: {fileID: 795604017}
-  - component: {fileID: 795604016}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -553,39 +551,6 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &795604016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 795604008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5958fcff3b9f78242890e93816cfe4a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 1807021617}
-  tr: {fileID: 795604015}
-  topSpeed: 6
-  bottomSpeed: 2
-  glideLimit: 100
-  jumpPower: 300
-  nerfTime: 20
-  dashPower: 24
-  gladingPower: 24
---- !u!114 &795604017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 795604008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f876124ed48b024d8483d0978faca17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &841445239 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f2ae2c50230b9bd4d93fa67848505c2c, type: 3}
