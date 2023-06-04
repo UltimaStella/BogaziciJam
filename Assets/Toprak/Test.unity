@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 4
-  PlayerSpawnLocation: {fileID: 382867149}
+  PlayerSpawnLocation: {fileID: 382867150}
   AreaTime: 5
   KilledEnemyCount: 0
   ComboCount: 0
@@ -516,7 +516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
-  PlayerSpawnLocation: {fileID: 220117693}
+  PlayerSpawnLocation: {fileID: 220117694}
   AreaTime: 1000
   KilledEnemyCount: 0
   ComboCount: 0
@@ -1054,6 +1054,8 @@ MonoBehaviour:
   DashCooldown: 1
   MovementSpeedPenaltyAmount: 40
   MovementSpeedPenaltyTime: 5
+  gameMenu: {fileID: 0}
+  animator: {fileID: 0}
   inDash: 0
 --- !u!54 &808746731
 Rigidbody:
@@ -1244,7 +1246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 3
-  PlayerSpawnLocation: {fileID: 1367367385}
+  PlayerSpawnLocation: {fileID: 1367367386}
   AreaTime: 5
   KilledEnemyCount: 0
   ComboCount: 0
@@ -1951,7 +1953,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 1
-  PlayerSpawnLocation: {fileID: 136212102}
+  PlayerSpawnLocation: {fileID: 136212103}
   AreaTime: 100
   KilledEnemyCount: 0
   ComboCount: 0
@@ -2002,7 +2004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 2
-  PlayerSpawnLocation: {fileID: 1343000310}
+  PlayerSpawnLocation: {fileID: 1343000311}
   AreaTime: 10
   KilledEnemyCount: 0
   ComboCount: 0
