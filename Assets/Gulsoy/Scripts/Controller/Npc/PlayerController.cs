@@ -91,6 +91,9 @@ public class PlayerController : Controller
         if (e) { Jump(); }
         if (escape) { gameMenu.PauseGame(); }
 
+        
+        
+
 
         if (space && canDash) { StartCoroutine(Dash()); }
 
@@ -129,10 +132,8 @@ public class PlayerController : Controller
         e = Input.GetKeyDown(KeyCode.E);
         q = Input.GetKeyDown(KeyCode.Q);
         space = Input.GetKeyDown(KeyCode.Space);
-        escape = Input.GetKeyDown(KeyCode.Escape);
-
+        escape = Input.GetKeyDown(KeyCode.Escape); 
     }
-
 
     private IEnumerator Glide()
     {
@@ -151,7 +152,6 @@ public class PlayerController : Controller
 
     private IEnumerator Dash()
     {
-
         tr.emitting = true;
         canDash = false;
         isDashing = true;
