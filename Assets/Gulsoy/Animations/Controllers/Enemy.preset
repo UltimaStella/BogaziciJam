@@ -36,4 +36,8 @@ Preset:
     propertyPath: StopDistance
     value: 1.5
     objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: animator
+    value: 
+    objectReference: {fileID: 0}
   m_ExcludedProperties: []

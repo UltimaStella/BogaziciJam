@@ -107,7 +107,7 @@ MonoBehaviour:
   - {fileID: 5772323157311061680}
   StringsBanks:
   - {fileID: 2025873138474395311}
-  cacheTime: 638214811335250389
+  cacheTime: 638214855320440248
   cacheVersion: 131603
 --- !u!114 &2025873138474395311
 MonoBehaviour:
@@ -124,7 +124,7 @@ MonoBehaviour:
   Path: Assets/Semih/Banks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638214811335250389
+  lastModified: 638214855320440248
   FileSizes:
   - Name: 
     Value: 1028
@@ -173,7 +173,7 @@ MonoBehaviour:
   Path: Assets/Semih/Banks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638214811335230250
+  lastModified: 638214855320420619
   FileSizes: []
   Exists: 1
 --- !u!114 &7626109322978713403
