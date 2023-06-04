@@ -85,6 +85,7 @@ public class Area : MonoBehaviour
             Player.Instance.transform.position = Vector3.Lerp(Player.Instance.transform.position, PlayerSpawnLocation.position, Time.deltaTime);
             yield return null; 
         }
+        Player.Instance.GetComponent<Player>().enabled = true;
         ResetArea();
         DeactivateArea();
         ActivateArea();
