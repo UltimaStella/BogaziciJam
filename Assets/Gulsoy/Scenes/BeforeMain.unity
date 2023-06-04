@@ -527,8 +527,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308583481}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.2, y: 0, z: -6.69}
+  m_LocalScale: {x: 1, y: 1, z: -0.017177}
   m_Children:
   - {fileID: 430617356}
   - {fileID: 953811324}
@@ -1827,6 +1827,7 @@ MonoBehaviour:
   DashCooldown: 1
   MovementSpeedPenaltyAmount: 40
   MovementSpeedPenaltyTime: 5
+  gameMenu: {fileID: 0}
   animator: {fileID: 0}
   inDash: 0
 --- !u!65 &1336970450
@@ -2374,7 +2375,7 @@ Transform:
   m_GameObject: {fileID: 1731890323}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1.3354}
   m_Children:
   - {fileID: 514934179}
   - {fileID: 208704885}
