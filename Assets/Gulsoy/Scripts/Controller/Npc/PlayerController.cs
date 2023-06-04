@@ -145,7 +145,6 @@ public class PlayerController : Controller
 
     private IEnumerator Dash()
     {
-
         tr.emitting = true;
         canDash = false;
         isDashing = true;

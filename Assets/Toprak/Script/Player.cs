@@ -6,11 +6,17 @@ public class Player : MonoBehaviour
 
     [SerializeField] float Acc;
     [SerializeField] float Dec;
-    [SerializeField] float JumpPower;
+    [SerializeField] float JumpForce;
     [SerializeField] float RotationSpeed;
-    [SerializeField] float MaxSpeed;
+    [SerializeField] float MaxMovementSpeed;
+    [SerializeField] float FallMultiplier;
+
     public static Player Instance { get; private set; }
     float Speed;
+
+    float gravity = 9.8f;
+    bool isGrounded = true;
+    float VerticalSpeed;
 
     void Awake()
     {
@@ -32,7 +38,6 @@ public class Player : MonoBehaviour
     {
         float xMove = Input.GetAxis("Horizontal");
         float zMove = Input.GetAxis("Vertical");
-        float yMove = Input.GetAxis("Jump") * JumpPower;
 
         if (xMove != 0 || zMove != 0)
         {
@@ -40,13 +45,30 @@ public class Player : MonoBehaviour
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, RotationSpeed * Time.fixedDeltaTime);
 
-            Speed = Speed >= MaxSpeed ? MaxSpeed : Speed + Acc;
+            Speed = Speed >= MaxMovementSpeed ? MaxMovementSpeed : Speed + Acc;
         }
-        else
-        {
-            Speed = Speed <= 0 ? 0 : Speed - Dec;
-        }
+        else Speed = Speed <= 0 ? 0 : Speed - Dec;
 
-        RB.velocity = Speed * Time.fixedDeltaTime * new Vector3(xMove, 0, zMove);
+        Vector3 movement = Speed * Time.fixedDeltaTime * new Vector3(xMove, 0, zMove);
+
+        VerticalSpeed = isGrounded ? 0 : VerticalSpeed - Time.fixedDeltaTime * gravity * FallMultiplier;
+        Vector3 vertical = Time.fixedDeltaTime * VerticalSpeed * transform.up;
+        movement += vertical;
+        RB.velocity = movement;
+    }
+
+    private void Update()
+    {
+        if (isGrounded && Input.GetKeyDown(KeyCode.E)) 
+        { 
+            VerticalSpeed = JumpForce;
+            isGrounded = false;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+            isGrounded = true;
     }
 }
