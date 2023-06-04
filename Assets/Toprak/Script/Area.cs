@@ -76,4 +76,5 @@ public class Area : MonoBehaviour
             ComboCount = 0;
         }
     }
+    
 }
