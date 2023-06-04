@@ -77,5 +77,8 @@ public class Area : MonoBehaviour
         }
     }
     
+    public int GetAreaTime() => AreaTime;
+    public int GetRemainTime() => RemainTime;
+
     
 }
