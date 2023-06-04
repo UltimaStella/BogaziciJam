@@ -5,7 +5,7 @@ using static Tolga.Scripts.Managers.DisplayMusicInGame;
 public class Area : MonoBehaviour
 {
     public int ID;
-    [SerializeField] GameObject PlayerSpawnLocation;
+    [SerializeField] Transform PlayerSpawnLocation;
     public int AreaTime;
     public int RemainTime { get; private set; }
     public int KilledEnemyCount = 0;
@@ -58,11 +58,8 @@ public class Area : MonoBehaviour
     {
         PlayPunishmentSound();
         MakeFallOnThemeSound("themeMusic");
-        
-        Player.Instance.Retry(PlayerSpawnLocation.transform.position);
-        ResetArea();
-        DeactivateArea();
-        ActivateArea();
+
+        StartCoroutine(MovePlayerToSpawnPoint());
     }
 
     public void ResetArea()
@@ -79,6 +76,18 @@ public class Area : MonoBehaviour
     
     public int GetAreaTime() => AreaTime;
     public int GetRemainTime() => RemainTime;
-
-    
+ 
+    IEnumerator MovePlayerToSpawnPoint()
+    {
+        Player.Instance.GetComponent<Player>().enabled = false;
+        while (Vector3.Distance(Player.Instance.transform.position, PlayerSpawnLocation.position) > 0.01f)
+        {
+            Player.Instance.transform.position = Vector3.Lerp(Player.Instance.transform.position, PlayerSpawnLocation.position, Time.deltaTime);
+            yield return null; 
+        }
+        Player.Instance.GetComponent<Player>().enabled = true;
+        ResetArea();
+        DeactivateArea();
+        ActivateArea();
+    } 
 }

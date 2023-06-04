@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Assets.Scripts.UI.InGameMenu;
 
 public class Player : MonoBehaviour
 {
@@ -18,9 +19,11 @@ public class Player : MonoBehaviour
 
     [SerializeField] float MovementSpeedPenaltyAmount;
     [SerializeField] float MovementSpeedPenaltyTime;
+    public InGameMenu gameMenu;
 
     public static Player Instance { get; private set; }
 
+    public Animator animator;
     bool isRunning = false;
     float Speed;
 
@@ -41,12 +44,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        RB = GetComponent<Rigidbody>();
-    }
 
-    public void Retry(Vector3 SpawnLoc)
-    {
-        transform.SetPositionAndRotation(SpawnLoc, Quaternion.identity);
+        RB = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
@@ -62,6 +61,7 @@ public class Player : MonoBehaviour
 
             if (xMove != 0 || zMove != 0)
             {
+                animator.SetBool("Walking", true);
                 Vector3 movementDirection = new Vector3(xMove, 0, zMove);
                 Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
                 transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, RotationSpeed * Time.fixedDeltaTime);
@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
                 if (isRunning) Speed = Speed >= MaxRunSpeed ? MaxRunSpeed : Speed + Acc;
                 else Speed = Speed >= MaxWalkSpeed ? MaxWalkSpeed : Speed + Acc;
             }
-            else Speed = Speed <= 0 ? 0 : Speed - Dec;
+            else  { Speed = Speed <= 0 ? 0 : Speed - Dec; animator.SetBool("Walking", false); }
 
             Vector3 movement = Speed * movability * Time.fixedDeltaTime * new Vector3(xMove, 0, zMove);
 
@@ -85,24 +85,27 @@ public class Player : MonoBehaviour
         if (canDash && Input.GetKeyDown(KeyCode.Space)) StartCoroutine(Dash());
         if (inDash) return;
 
-        if (isGrounded && Input.GetKeyDown(KeyCode.E)) 
-        { 
+        if (isGrounded && Input.GetKeyDown(KeyCode.E))
+        {
+            animator.SetTrigger("Jump");
             VerticalSpeed = JumpForce;
             isGrounded = false;
+            animator.SetBool("Grounded", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift)) isRunning = true;
-        if (Input.GetKeyUp(KeyCode.LeftShift))   isRunning = false;
+        if (Input.GetKeyDown(KeyCode.LeftShift)) { isRunning = true; animator.SetBool("Running", true); }
+        if (Input.GetKeyUp(KeyCode.LeftShift)) {isRunning = false; animator.SetBool("Running", false);}
+        if (Input.GetKeyUp(KeyCode.Escape)) { gameMenu.PauseGame(); }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Ground"))
-            isGrounded = true;
+        if (collision.collider.CompareTag("Ground")) { isGrounded = true; animator.SetBool("Grounded",true); }
     }
 
     IEnumerator Dash()
     {
+        animator.SetTrigger("Dash");
         canDash = false;
         inDash = true;
         yield return new WaitForSeconds(DashTime);
