@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     public Animator animator;
     Vector3 initPos;
     Quaternion initQuartenion;
-    
+
     Area area;
     private bool isDeath;
 
@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
         initPos = transform.localPosition;
         initQuartenion = transform.localRotation;
     }
-    
+
     void Update()
     {
         if (!isDeath && AreaManager.Instance.CurrentArea == area && Vector3.Distance(transform.position, Player.Instance.transform.position) > StopDistance)
@@ -32,20 +32,28 @@ public class Enemy : MonoBehaviour
             Quaternion _lookRotation = Quaternion.LookRotation(_direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * RotationSpeed);
             animator.SetBool("Running", true);
+
         }
-        else animator.SetBool("Running",false);
+        else animator.SetBool("Running", false);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             area.KilledEnemyCount++;
             if (Player.Instance.inDash) area.ComboCount++;
-            else Player.Instance.MovementPenalty();
-            //gameObject.SetActive(false);
+            else
+            {
+                Player.Instance.MovementPenalty();
+                Player.Instance.transform.LookAt(transform.position);
+
+                Player.Instance.animator.SetTrigger("Punch");
+
+            }//gameObject.SetActive(false);
             animator.SetTrigger("Death");
             isDeath = true;
+
         }
     }
 

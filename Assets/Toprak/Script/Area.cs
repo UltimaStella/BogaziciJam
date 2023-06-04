@@ -33,7 +33,7 @@ public class Area : MonoBehaviour
     {
         gameObject.SetActive(true);
     }
-        
+
     public void ActivateArea()
     {
         if (AreaTimerCoroutine == null) AreaTimerCoroutine = StartCoroutine(CountDown());
@@ -80,10 +80,13 @@ public class Area : MonoBehaviour
     IEnumerator MovePlayerToSpawnPoint()
     {
         Player.Instance.GetComponent<Player>().enabled = false;
-        while (Vector3.Distance(Player.Instance.transform.position, PlayerSpawnLocation.position) > 0.01f)
+        while (Vector3.Distance(Player.Instance.transform.position, PlayerSpawnLocation.position) > 1f)
         {
             Player.Instance.transform.position = Vector3.Lerp(Player.Instance.transform.position, PlayerSpawnLocation.position, Time.deltaTime);
-            yield return null; 
+            Player.Instance.transform.LookAt(new Vector3(PlayerSpawnLocation.position.x, Player.Instance.transform.position.y, PlayerSpawnLocation.position.z));
+            Player.Instance.animator.SetBool("Walking", true);
+            Player.Instance.animator.SetBool("Running", true);
+            yield return null;
         }
         Player.Instance.GetComponent<Player>().enabled = true;
         ResetArea();
